@@ -1,0 +1,26 @@
+[
+  {
+    "id": 7001,
+    "quote": "I raise a glass to the liberators of Afghanistan, the Taliban.",
+    "person": "Nick Fuentes",
+    "venue": "America First livestream",
+    "date": "2021-08-17",
+    "categories": [
+      "Democracy/Elections",
+      "Race/Ethnicity/Religion"
+    ],
+    "source": "https://www.vice.com/en/article/hard-not-to-respect-that-why-white-nationalists-are-toasting-the-taliban/"
+  },
+  {
+    "id": 7002,
+    "quote": "We need a dictatorship\u2026 take control of the media\u2026 then stop having elections.",
+    "person": "Nick Fuentes",
+    "venue": "Livestream clip",
+    "date": "2022-11-10",
+    "categories": [
+      "Democracy/Elections",
+      "Media/Press"
+    ],
+    "source": "https://www.peoplefor.org/rightwingwatch/post/nick-fuentes-says-the-results-of-the-2022-elections-prove-why-we-need-a-dictatorship"
+  }
+]

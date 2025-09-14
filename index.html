@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Convergence of Conservative Thought</title>
+  <meta name="color-scheme" content="light">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header>
+  <div class="wrap brand">
+    <img src="assets/img/logo.svg" alt="" class="logo" />
+    <div><h1 id="pageTitle">Convergence of Conservative Thought</h1></div>
+    <div class="header-actions">
+      <button class="btn ghost" id="editAboutBtn">Edit About</button>
+      <button class="btn" id="saveAboutBtn" hidden>Save</button>
+    </div>
+  </div>
+
+  <div class="wrap about" id="aboutBlock" aria-live="polite">
+    <h2>About This Page</h2>
+    <p id="aboutText">
+      The time is now to have our Real Turning Point. Let us use this opportunity to turn a lens back on ourselves and have an honest conversation about who we want to be and how we want to be remembered. In recognition of the danger of erasing the dialog of today to adapt to future sensibilities, this page strives to preserve the statements of today, in order to forever accurately represent the true thoughts and feelings of our most influential politicians and personalities.
+    </p>
+  </div>
+
+  <div class="wrap controls" role="region" aria-label="Filters">
+    <div>
+      <label for="figure">Choose a figure</label>
+      <select id="figure"></select>
+    </div>
+    <div>
+      <label for="category">Category</label>
+      <select id="category">
+        <option value="ALL">All categories</option>
+        <option>Immigration</option><option>LGBTQ</option><option>Women's Rights</option><option>Guns</option>
+        <option>Media/Press</option><option>Democracy/Elections</option><option>Race/Ethnicity/Religion</option>
+        <option>Conspiracy</option><option>Campus/Woke</option><option>COVID</option><option>Economy</option>
+        <option>Climate/Science</option><option>Religion</option>
+      </select>
+    </div>
+    <div>
+      <label for="sort">Sort</label>
+      <select id="sort"><option value="new">Newest → Oldest</option><option value="old">Oldest → Newest</option></select>
+    </div>
+    <div>
+      <label for="search">Search text</label>
+      <input id="search" type="search" placeholder="Find words in quotes…"/>
+    </div>
+  </div>
+
+  <div class="wrap toolbar">
+    <button class="btn" id="exportJson">Export JSON</button>
+    <button class="btn" id="exportCsv">Export CSV</button>
+    <button class="btn ghost" id="downloadHTML">Download This Page</button>
+    <button class="btn ghost" id="importBtn">Import Dataset (JSON)</button>
+    <input type="file" id="importFile" accept="application/json" hidden />
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="count" class="count"></div>
+  <div id="list" aria-live="polite"></div>
+  <div id="empty" class="empty" hidden>No matching quotes with current filters.</div>
+</main>
+
+<footer class="wrap">
+  Sources are linked per quote. Use <strong>Wayback</strong> to view archived snapshots or <strong>Archive.today</strong> to attempt a fresh capture.
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

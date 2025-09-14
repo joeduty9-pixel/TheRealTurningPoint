@@ -1,0 +1,25 @@
+[
+  {
+    "id": 7101,
+    "quote": "The deconstruction of the administrative state.",
+    "person": "Steve Bannon",
+    "venue": "CPAC panel",
+    "date": "2017-02-23",
+    "categories": [
+      "Democracy/Elections"
+    ],
+    "source": "https://time.com/4682023/cpac-donald-trump-speech-transcript/"
+  },
+  {
+    "id": 7102,
+    "quote": "We\u2019re going to flood the zone with shit.",
+    "person": "Steve Bannon",
+    "venue": "Reported remark",
+    "date": "2018-01-01",
+    "categories": [
+      "Media/Press",
+      "Democracy/Elections"
+    ],
+    "source": "https://www.vox.com/policy-and-politics/2017/1/24/14363148/steve-bannon"
+  }
+]
