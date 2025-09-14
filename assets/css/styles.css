@@ -44,3 +44,23 @@ blockquote{margin:0 0 8px 0; font-size:1.35rem; font-weight:800; line-height:1.3
 .tags{font-size:.9rem;color:var(--muted);font-style:italic}
 .links a{margin-right:10px;color:#fff;text-decoration:underline}
 .empty{opacity:.8;font-style:italic}
+.title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title-block h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.title-block .subtitle {
+  font-size: 1rem;
+  margin-top: 4px;
+  color: #f0f0f0;
+  font-weight: 400;
+  text-align: center;
+}
+
