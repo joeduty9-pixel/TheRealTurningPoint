@@ -1,53 +1,13 @@
-// Robust app.js with explicit debug UI, Pages->Raw fallback, and clearer errors
-
-// ---------- Tiny DOM helpers ----------
-const $ = (s) => document.querySelector(s);
-const el = (tag, props={}) => Object.assign(document.createElement(tag), props);
-const norm = (s) => (s||"").toLowerCase();
-
-// ---------- Debug UI ----------
-const dbg = (() => {
-  const panel = el("div", { id: "trpDebugPanel", style: `
-    position: fixed; z-index: 9999; bottom: 12px; right: 12px;
-    max-width: 380px; max-height: 40vh; overflow: auto;
-    background: rgba(10,22,40,.95); color:#fff; font: 12px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    border: 1px solid rgba(255,255,255,.2); border-radius: 10px; padding: 10px; display:none;
-    box-shadow: 0 10px 30px rgba(0,0,0,.5);
-  `});
-  const title = el("div", { innerHTML: "<strong>Debug</strong> · data loader"});
-  const logArea = el("div", { id: "trpDebugLog", style: "margin-top:6px; white-space: pre-wrap;" });
-  const closeBtn = el("button", { textContent: "×", style: "position:absolute; top:4px; right:8px; background:transparent; color:#fff; border:0; font-size:16px; cursor:pointer" });
-  closeBtn.addEventListener("click", ()=> panel.style.display = "none");
-  panel.append(title, closeBtn, logArea);
-  document.addEventListener("DOMContentLoaded", () => document.body.appendChild(panel));
-
-  // Add a toggle button into header/toolbar if present
-  const injectToggle = () => {
-    const toolbar = document.querySelector(".toolbar") || document.querySelector("header .wrap.brand") || document.querySelector("header");
-    if (!toolbar || toolbar.querySelector("#trpDebugToggle")) return;
-    const btn = el("button", { id:"trpDebugToggle", className: "btn ghost", textContent: "Debug" });
-    Object.assign(btn.style, { marginLeft: "8px" });
-    btn.addEventListener("click", () => panel.style.display = (panel.style.display==="none"||!panel.style.display) ? "block":"none");
-    toolbar.appendChild(btn);
-  };
-  document.addEventListener("DOMContentLoaded", injectToggle);
-
-  const log = (...args) => {
-    const msg = args.map(a => typeof a === "string" ? a : JSON.stringify(a,null,2)).join(" ");
-    const area = document.getElementById("trpDebugLog");
-    if (area) {
-      const line = el("div", { textContent: msg });
-      area.appendChild(line);
-      area.scrollTop = area.scrollHeight;
-    }
-    // Also echo to console for DevTools
-    try { console.log("[TRP]", ...args); } catch {}
-  };
-  return log;
-})();
+// ---------- Helpers ----------
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const el = (t, props={}) => Object.assign(document.createElement(t), props);
+const norm = s => (s||"").toLowerCase();
+const wb = u => `https://web.archive.org/web/*/${encodeURIComponent(u)}`;
+const at = u => `https://archive.today/?run=1&url=${encodeURIComponent(u)}`;
 
 // ---------- Config ----------
-const FIGURES = [
+const FIGURES_CANONICAL = [
   { key:"charlie-kirk", name:"Charlie Kirk" },
   { key:"nick-fuentes", name:"Nick Fuentes" },
   { key:"steve-bannon", name:"Steve Bannon" },
@@ -55,15 +15,74 @@ const FIGURES = [
   { key:"steve-king", name:"Steve King" }
 ];
 
-// Prefer Pages domain (self-owned), fallback to Raw if needed
+// Order: Charlie, ALL, then the rest
+const FIGURES = (()=>{
+  const first = FIGURES_CANONICAL[0];
+  const rest = FIGURES_CANONICAL.slice(1);
+  return [first, {key:"ALL", name:"All Figures"}, ...rest];
+})();
+
 const PAGES_BASE = "https://joeduty9-pixel.github.io/TheRealTurningPoint/data";
 const RAW_BASE   = "https://raw.githubusercontent.com/joeduty9-pixel/TheRealTurningPoint/main/data";
 
-// ---------- Simple helpers ----------
-const wb = u => `https://web.archive.org/web/*/${encodeURIComponent(u)}`;
-const at = u => `https://archive.today/?run=1&url=${encodeURIComponent(u)}`;
+// ---------- Debug UI ----------
+const dbg = (() => {
+  const panel = el("div", { id: "trpDebugPanel", style: `
+    position: fixed; z-index: 9999; bottom: 14px; right: 14px;
+    max-width: 420px; max-height: 50vh; overflow:auto;
+    background: rgba(22, 22, 30, .95); color:#e6eefb; font: 12px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 10px; display:none;
+    box-shadow: 0 20px 50px rgba(0,0,0,.55);
+  `});
+  const head = el("div", { style:"display:flex;align-items:center;gap:8px;margin-bottom:6px;" });
+  head.append(
+    el("strong", { textContent:"Debug • Loader" }),
+    el("span", { textContent:"(toggle stays for dev)", style:"opacity:.7" }),
+    el("div", { style:"flex:1" }),
+    el("button", { textContent:"×", style:"background:transparent;border:0;color:#e6eefb;font-size:18px;cursor:pointer;" , onclick:()=>panel.style.display="none"})
+  );
+  const log = el("div", { id:"trpLog", style:"white-space:pre-wrap" });
+  panel.append(head, log);
+  document.addEventListener("DOMContentLoaded", ()=> document.body.append(panel));
+  const toggleInject = () => {
+    const spot = document.querySelector(".toolbar") || document.querySelector("header .wrap.brand") || document.querySelector("header");
+    if(!spot || spot.querySelector("#trpDebugToggle")) return;
+    const btn = el("button", { id:"trpDebugToggle", className:"btn ghost", textContent:"Debug" });
+    btn.style.marginLeft = "8px";
+    btn.onclick = ()=> panel.style.display = (panel.style.display==="none"||!panel.style.display) ? "block" : "none";
+    spot.appendChild(btn);
+    // Preflight
+    if(!spot.querySelector("#trpPreflight")){
+      const pf = el("button", { id:"trpPreflight", className:"btn", textContent:"Preflight Datasets" });
+      pf.style.marginLeft = "8px";
+      pf.onclick = preflightDatasets;
+      spot.appendChild(pf);
+    }
+  };
+  document.addEventListener("DOMContentLoaded", toggleInject);
+  const write = (...a)=>{
+    const msg = a.map(x=> typeof x==="string" ? x : JSON.stringify(x,null,2)).join(" ");
+    const line = el("div", { textContent: msg });
+    log.appendChild(line); log.scrollTop = log.scrollHeight;
+    try { console.log("[TRP]", ...a); } catch {}
+  };
+  return write;
+})();
 
-// ---------- UI refs ----------
+function banner(html, level="info"){
+  let b = document.getElementById("trpBanner");
+  if(!b){
+    b = el("div", { id:"trpBanner" });
+    Object.assign(b.style, { position:"sticky", top:"0", zIndex:1000, padding:"10px 14px" });
+    document.body.prepend(b);
+  }
+  const map = { info:["#10213d","#cfe0ff"], warn:["#3b2a0f","#ffe7ba"], error:["#3b0f0f","#ffcaca"] };
+  const [bg, fg] = map[level] || map.info;
+  b.style.background = bg; b.style.color = fg; b.innerHTML = html;
+}
+function clearBanner(){ const b = $("#trpBanner"); if(b) b.remove(); }
+
+// ---------- DOM Refs ----------
 const figureSel = $("#figure");
 const categorySel = $("#category");
 const sortSel = $("#sort");
@@ -72,96 +91,108 @@ const listEl = $("#list");
 const countEl = $("#count");
 const emptyEl = $("#empty");
 
-let currentData = [];
-
-// Populate figure dropdown
+// ---------- Populate Figure Dropdown ----------
 (function initFigures(){
   if(!figureSel) return;
-  for(const f of FIGURES){
+  FIGURES.forEach(f=>{
     const o = el("option", { value: f.key, textContent: f.name });
     figureSel.appendChild(o);
-  }
-  figureSel.value = figureSel.value || "charlie-kirk";
+  });
+  figureSel.value = "charlie-kirk"; // keep Charlie as default
 })();
 
+// ---------- Data Loading ----------
 async function tryFetchJson(url){
-  dbg("fetch:", url);
+  dbg("GET", url);
   try{
-    const res = await fetch(url, { cache: "no-cache" });
-    dbg("status:", res.status, res.statusText);
+    const res = await fetch(url, { cache:"no-cache" });
+    dbg("→", res.status, res.statusText);
     if(!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
-    const data = await res.json();
-    return { data };
-  }catch(err){
-    dbg("error:", String(err));
-    return { error: String(err) };
+    return { data: await res.json() };
+  }catch(e){
+    dbg("ERR", String(e));
+    return { error: String(e) };
   }
 }
 
-async function loadFigureData(key){
-  const urlPages = `${PAGES_BASE}/${key}.json`;
-  const urlRaw   = `${RAW_BASE}/${key}.json`;
-
-  dbg("Loading figure:", key);
-  let {data, error} = await tryFetchJson(urlPages);
-  if(error){
-    dbg("Pages fetch failed, trying Raw…");
-    const alt = await tryFetchJson(urlRaw);
-    data = alt.data; error = alt.error;
-    if(data){
-      banner(`Loaded <code>${key}.json</code> from <strong>raw.githubusercontent.com</strong> (Pages URL failed).`, "warn");
-    }
-  }
-
+async function loadOneFigure(key){
+  const pages = `${PAGES_BASE}/${key}.json`;
+  const raw   = `${RAW_BASE}/${key}.json`;
+  let {data, error} = await tryFetchJson(pages);
   if(!data){
-    currentData = [];
-    banner(`Could not load <code>${key}.json</code>.<br>
-      Expected URLs:<br>
-      <a href="${urlPages}" target="_blank">${urlPages}</a><br>
-      <a href="${urlRaw}" target="_blank">${urlRaw}</a>`, "error");
+    dbg("Falling back to RAW for", key);
+    ({data, error} = await tryFetchJson(raw));
+  }
+  return { key, data: Array.isArray(data)?data:[], error };
+}
+
+async function preflightDatasets(){
+  const keys = FIGURES_CANONICAL.map(f=>f.key);
+  let ok = [], missing = [];
+  for (const k of keys){
+    const pages = `${PAGES_BASE}/${k}.json`;
+    const raw   = `${RAW_BASE}/${k}.json`;
+    let {data} = await tryFetchJson(pages);
+    if(!data){
+      ({data} = await tryFetchJson(raw));
+    }
+    if(Array.isArray(data) && data.length) ok.push(k); else missing.push(k);
+  }
+  banner(`Datasets OK: <strong>${ok.join(", ")||"none"}</strong><br>Missing/empty: <strong>${missing.join(", ")||"none"}</strong>`, missing.length ? "warn" : "info");
+}
+
+let currentData = [];
+
+async function loadSelection(){
+  clearBanner();
+  const val = figureSel ? figureSel.value : "charlie-kirk";
+  if(val === "ALL"){
+    // Load all in parallel, merge
+    const keys = FIGURES_CANONICAL.map(f=>f.key);
+    const results = await Promise.all(keys.map(loadOneFigure));
+    const merged = [];
+    const missing = [];
+    results.forEach(r=>{
+      if(r.data?.length){
+        // ensure person label set
+        const name = (FIGURES_CANONICAL.find(f=>f.key===r.key)||{}).name || r.key;
+        r.data.forEach(item=>{
+          if(!item.person) item.person = name;
+          merged.push(item);
+        });
+      }else{
+        missing.push(r.key);
+      }
+    });
+    currentData = merged;
+    if(missing.length){
+      banner(`Loaded <strong>${merged.length}</strong> quotes · Missing datasets: <strong>${missing.join(", ")}</strong>`, "warn");
+    }else{
+      banner(`Loaded <strong>${merged.length}</strong> quotes from all figures.`, "info");
+    }
   }else{
-    currentData = Array.isArray(data) ? data : [];
+    // Single figure
+    const { data, error } = await loadOneFigure(val);
+    currentData = data;
+    if(error && (!data || !data.length)){
+      banner(`Could not load dataset for <strong>${val}</strong>.`, "error");
+    }
   }
   render();
 }
 
-function banner(html, level="info"){
-  // lightweight inline banner
-  let b = document.getElementById("trpBanner");
-  if(!b){
-    b = el("div", { id: "trpBanner" });
-    Object.assign(b.style, {
-      position:"sticky", top:"0", zIndex: 1000, padding:"10px 14px",
-      font:"14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial"
-    });
-    document.body.prepend(b);
-  }
-  const colors = {
-    info:  ["#0B1E3D", "#CDE0FF"],
-    warn:  ["#3D2A0B", "#FFEABA"],
-    error: ["#3D0B0B", "#FFC9C9"]
-  }[level] || ["#0B1E3D","#CDE0FF"];
-  b.style.background = colors[0];
-  b.style.color = colors[1];
-  b.innerHTML = html;
-}
-
-function clearBanner(){
-  const b = document.getElementById("trpBanner");
-  if(b) b.remove();
-}
-
+// ---------- Render ----------
 function render(){
   if(!listEl) return;
-  clearBanner();
-
   let items = currentData.slice();
+
   const cat = categorySel ? categorySel.value : "ALL";
   const q = searchEl ? norm(searchEl.value) : "";
   const order = sortSel ? sortSel.value : "new";
 
-  if(cat!=="ALL"){ items = items.filter(it => (it.categories||[]).some(c=>norm(c)===cat.toLowerCase())); }
-  if(q){ items = items.filter(it => norm(it.quote).includes(q) || norm(it.venue).includes(q)); }
+  if(cat!=="ALL"){ items = items.filter(it => (it.categories||[]).some(c=>norm(c)===norm(cat))); }
+  if(q){ items = items.filter(it => norm(it.quote).includes(q) || norm(it.venue).includes(q) || norm(it.person).includes(q)); }
+
   items.sort((a,b)=>{
     const da=a.date||"", db=b.date||"";
     return order==="new" ? db.localeCompare(da) : da.localeCompare(db);
@@ -169,49 +200,49 @@ function render(){
 
   listEl.innerHTML = "";
   if(!items.length){
-    if(emptyEl) emptyEl.hidden = false;
-    if(countEl) countEl.textContent = "";
+    if(emptyEl) emptyEl.hidden=false;
+    if(countEl) countEl.textContent="";
     return;
   }
-  if(emptyEl) emptyEl.hidden = true;
+  if(emptyEl) emptyEl.hidden=true;
   if(countEl) countEl.textContent = `${items.length} entr${items.length===1?'y':'ies'}`;
 
   for(const r of items){
-    const card = el("article", { className: "card" });
-    const qEl = el("blockquote", { textContent: `“${r.quote}”` });
-    card.appendChild(qEl);
+    const card = el("article", { className:"card" });
+    card.appendChild(el("blockquote", { textContent:`“${r.quote}”` }));
 
-    const meta = el("div", { className: "meta" });
-    const pretty = r.date ? new Date(r.date+"T00:00:00Z").toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}) : "Date n/a";
-    meta.textContent = `— ${r.person||""} · ${pretty} · ${r.venue||""}`;
+    // Meta
+    const pretty = r.date ? new Date(r.date+"T00:00:00Z").toLocaleDateString(undefined,
+      { year:'numeric', month:'short', day:'numeric' }) : "Date n/a";
+    const meta = el("div", { className:"meta", textContent:`— ${r.person||""} · ${pretty} · ${r.venue||""}` });
     card.appendChild(meta);
 
-    if(r.categories?.length){
-      const tags = el("div");
-      for(const c of r.categories){
-        tags.appendChild(el("span", { className:"tag", textContent: c }));
-      }
+    // Tags (comma separated)
+    if (Array.isArray(r.categories) && r.categories.length){
+      const tags = el("div", { className:"tags", textContent: r.categories.join(", ") });
       card.appendChild(tags);
     }
+
+    // Links
     if(r.source){
-      const links = el("div", { className: "links" });
-      links.appendChild(el("a", { href:r.source, target:"_blank", rel:"noopener", textContent:"Open source" }));
-      links.appendChild(el("a", { href:wb(r.source), target:"_blank", rel:"noopener", textContent:"Wayback" }));
-      links.appendChild(el("a", { href:at(r.source), target:"_blank", rel:"noopener", textContent:"Archive.today" }));
+      const links = el("div", { className:"links" });
+      links.append(
+        el("a", { href:r.source, target:"_blank", rel:"noopener", textContent:"Open source" }),
+        el("a", { href:wb(r.source), target:"_blank", rel:"noopener", textContent:"Wayback" }),
+        el("a", { href:at(r.source), target:"_blank", rel:"noopener", textContent:"Archive.today" }),
+      );
       card.appendChild(links);
     }
+
     listEl.appendChild(card);
   }
 }
 
-// Events
-if(figureSel) figureSel.addEventListener("change", ()=> loadFigureData(figureSel.value));
-if(categorySel) categorySel.addEventListener("change", render);
-if(sortSel) sortSel.addEventListener("change", render);
-if(searchEl) searchEl.addEventListener("input", render);
+// ---------- Events ----------
+if (figureSel) figureSel.addEventListener("change", loadSelection);
+if (categorySel) categorySel.addEventListener("change", render);
+if (sortSel) sortSel.addEventListener("change", render);
+if (searchEl) searchEl.addEventListener("input", render);
 
-// Boot
-document.addEventListener("DOMContentLoaded", ()=> {
-  const startKey = figureSel && figureSel.value ? figureSel.value : "charlie-kirk";
-  loadFigureData(startKey);
-});
+// ---------- Boot ----------
+document.addEventListener("DOMContentLoaded", ()=> loadSelection());

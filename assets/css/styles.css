@@ -1,1 +1,56 @@
-body{font-family:sans-serif;background:#0B1E3D;color:#fff;margin:0} .wrap{padding:1em;} .card{margin:1em 0;padding:1em;background:#fff;color:#000;border-radius:6px;} blockquote{font-size:1.2em;font-weight:bold;margin:0 0 .5em 0;}
+/* Base */
+:root{
+  --bg: #0f1c2e;
+  --panel: #162a4a;
+  --card: #f7f8fc;
+  --text: #0d1321;
+  --muted: #6b7280;
+  --accent: #8aa4ff;
+  --btn: #1e3a8a;
+  --btnText: #e6eefb;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #fff;
+}
+
+/* Header / About */
+.wrap{max-width:1100px;margin:0 auto;padding:16px;}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand .logo{width:44px;height:44px;display:block;}
+.about{background:var(--panel);border-radius:12px;margin-top:10px;}
+.about h2{margin:0 0 6px 0}
+.about p{margin:0;line-height:1.55;}
+
+/* Controls */
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;background:var(--panel);border-radius:12px;padding:12px;}
+.controls label{display:block;font-size:12px;opacity:.9;margin-bottom:4px}
+.controls select,.controls input[type="search"]{
+  width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0d1b2a;color:#e6eefb;
+}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.btn{background:var(--btn);border:0;color:var(--btnText);padding:8px 12px;border-radius:10px;cursor:pointer}
+.btn:hover{opacity:.9}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:#e6eefb}
+
+/* Main list */
+#count{margin:8px 0 0 0;opacity:.85}
+.card{
+  background: var(--card); color: var(--text);
+  border-radius: 14px; padding: 16px; margin: 14px 0;
+  box-shadow: 0 10px 24px rgba(0,0,0,.15);
+}
+blockquote{margin:0 0 8px 0; font-size:1.35rem; font-weight:800; line-height:1.2}
+.meta{font-size:.92rem;color:var(--muted);margin-bottom:6px}
+.tags{font-size:.9rem;color:var(--muted);font-style:italic}
+.links a{margin-right:10px;color:#1e3a8a;text-decoration:none}
+.links a:hover{text-decoration:underline}
+
+/* Empty */
+.empty{opacity:.8;font-style:italic}
