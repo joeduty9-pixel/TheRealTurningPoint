@@ -12,8 +12,12 @@ const FIGURES_CANONICAL = [
   { key:"nick-fuentes", name:"Nick Fuentes" },
   { key:"steve-bannon", name:"Steve Bannon" },
   { key:"stephen-miller", name:"Stephen Miller" },
-  { key:"steve-king", name:"Steve King" }
+  { key:"steve-king", name:"Steve King" },
+  { key:"tucker-carlson", name:"Tucker Carlson" },
+  { key:"lauren-boebert", name:"Lauren Boebert" }
 ];
+
+
 
 // Order: Charlie, ALL, then the rest
 const FIGURES = (()=>{
