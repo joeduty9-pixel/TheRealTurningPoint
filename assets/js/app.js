@@ -15,6 +15,12 @@ const FIGURES_CANONICAL = [
   { key:"steve-king", name:"Steve King" },
   { key:"tucker-carlson", name:"Tucker Carlson" },
   { key:"lauren-boebert", name:"Lauren Boebert" }
+  { key:"donald-trump", name:"Donald Trump" },
+  { key:"mike-pence", name:"Mike Pence" },
+  { key:"betsy-devos", name:"Betsy DeVos" },
+  { key:"jeff-sessions", name:"Jeff Sessions" },
+  { key:"sean-hannity", name:"Sean Hannity" },
+  { key:"rush-limbaugh", name:"Rush Limbaugh" }
 ];
 
 

@@ -1,0 +1,57 @@
+[
+  {
+    "quote": "I’ll do it for charity… I’ll be waterboarded.",
+    "person": "Sean Hannity",
+    "date": "2009-04-22",
+    "venue": "Fox News broadcast (offer to be waterboarded)",
+    "categories": [
+      "Torture/War on Terror"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Waterboarding"
+  },
+  {
+    "quote": "I retracted nothing.",
+    "person": "Sean Hannity",
+    "date": "2017-05-23",
+    "venue": "On-air amid Seth Rich retraction",
+    "categories": [
+      "Media/Press",
+      "Conspiracy Theories"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Murder_of_Seth_Rich"
+  },
+  {
+    "quote": "They have been wrong about a lot of things, including face masks. Maybe they are wrong, maybe not.",
+    "person": "Sean Hannity",
+    "date": "2020-07-09",
+    "venue": "On-air discussion with President Trump / show segment",
+    "categories": [
+      "COVID-19",
+      "Health"
+    ],
+    "source": "https://www.factcheck.org/2020/10/timeline-of-trumps-covid-19-comments/"
+  },
+  {
+    "quote": "We’ve got to be honest: there’s been so much misinformation on COVID but I’ve said from the beginning, take it seriously.",
+    "person": "Sean Hannity",
+    "date": "2020-05-21",
+    "venue": "On-air remarks (mask-wearing segment)",
+    "categories": [
+      "COVID-19",
+      "Health"
+    ],
+    "source": "https://www.vanityfair.com/news/2020/05/even-sean-hannity-is-talking-sense-on-mask-wearing"
+  },
+  {
+    "quote": "Ivermectin…",
+    "person": "Sean Hannity",
+    "date": "2021-09-01",
+    "venue": "On-air discussions and later claims (coverage)",
+    "categories": [
+      "COVID-19",
+      "Health",
+      "Media/Press"
+    ],
+    "source": "https://www.mediamatters.org/fox-news/hannitys-new-lie-he-warned-his-audience-about-ivermectin"
+  }
+]

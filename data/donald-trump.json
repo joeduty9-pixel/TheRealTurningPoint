@@ -1,0 +1,57 @@
+[
+  {
+    "quote": "Grab ’em by the pussy. You can do anything.",
+    "person": "Donald Trump",
+    "date": "2005-09-01",
+    "venue": "Access Hollywood bus recording (published Oct. 7, 2016)",
+    "categories": [
+      "Women",
+      "Sexual Misconduct"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Donald_Trump_Access_Hollywood_tape"
+  },
+  {
+    "quote": "You also had people that were very fine people, on both sides.",
+    "person": "Donald Trump",
+    "date": "2017-08-15",
+    "venue": "Trump Tower press conference (Charlottesville)",
+    "categories": [
+      "Race/Ethnicity/Religion",
+      "Extremism"
+    ],
+    "source": "https://www.vox.com/2017/8/15/16154028/trump-press-conference-transcript-charlottesville"
+  },
+  {
+    "quote": "Why are we having all these people from shithole countries come here?",
+    "person": "Donald Trump",
+    "date": "2018-01-11",
+    "venue": "White House immigration meeting (reported)",
+    "categories": [
+      "Immigration",
+      "Race/Ethnicity/Religion"
+    ],
+    "source": "https://www.pbs.org/newshour/politics/trump-denies-he-used-profane-language-to-describe-african-countries"
+  },
+  {
+    "quote": "And then I see the disinfectant, where it knocks it out in a minute... is there a way we can do something like that by injection inside or almost a cleaning?",
+    "person": "Donald Trump",
+    "date": "2020-04-23",
+    "venue": "White House COVID-19 briefing",
+    "categories": [
+      "COVID-19",
+      "Health"
+    ],
+    "source": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-vice-president-pence-members-coronavirus-task-force-press-briefing-31/"
+  },
+  {
+    "quote": "Proud Boys — stand back and stand by.",
+    "person": "Donald Trump",
+    "date": "2020-09-29",
+    "venue": "First 2020 presidential debate",
+    "categories": [
+      "Extremism",
+      "Democracy/Elections"
+    ],
+    "source": "https://apnews.com/article/election-2020-joe-biden-race-and-ethnicity-donald-trump-chris-wallace-0b32339da25fbc9e8b7c7c7066a1db0f"
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "quote": "I would imagine that there's probably a gun in the school to protect from potential grizzlies.",
+    "person": "Betsy DeVos",
+    "date": "2017-01-17",
+    "venue": "Senate HELP Committee confirmation hearing",
+    "categories": [
+      "Guns"
+    ],
+    "source": "https://www.politifact.com/factchecks/2017/jan/18/betsy-devos/education-nominee-betsy-devos-says-wyoming-school-/"
+  },
+  {
+    "quote": "I think that is best left to locales and states to decide.",
+    "person": "Betsy DeVos",
+    "date": "2017-01-17",
+    "venue": "Senate HELP Committee confirmation hearing (on guns in schools)",
+    "categories": [
+      "Guns",
+      "Education"
+    ],
+    "source": "https://www.govinfo.gov/content/pkg/CHRG-115shrg23667/pdf/CHRG-115shrg23667.pdf"
+  },
+  {
+    "quote": "Schools should have the flexibility to address threats that they face.",
+    "person": "Betsy DeVos",
+    "date": "2017-01-17",
+    "venue": "Senate HELP Committee confirmation hearing",
+    "categories": [
+      "Guns",
+      "Education"
+    ],
+    "source": "https://www.govinfo.gov/content/pkg/CHRG-115shrg23667/pdf/CHRG-115shrg23667.pdf"
+  },
+  {
+    "quote": "The federal government should not be the first stop for solutions.",
+    "person": "Betsy DeVos",
+    "date": "2017-01-17",
+    "venue": "Senate HELP Committee confirmation hearing",
+    "categories": [
+      "Education",
+      "Federalism"
+    ],
+    "source": "https://www.govinfo.gov/content/pkg/CHRG-115shrg23667/pdf/CHRG-115shrg23667.pdf"
+  },
+  {
+    "quote": "I support accountability, but I also support choice.",
+    "person": "Betsy DeVos",
+    "date": "2017-01-17",
+    "venue": "Senate HELP Committee confirmation hearing",
+    "categories": [
+      "Education"
+    ],
+    "source": "https://www.govinfo.gov/content/pkg/CHRG-115shrg23667/pdf/CHRG-115shrg23667.pdf"
+  }
+]
