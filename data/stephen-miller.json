@@ -1,11 +1,53 @@
 [
   {
-    "quote": "We must end chain migration to protect our sovereignty.",
+    "quote": "The poem was added later.",
     "person": "Stephen Miller",
-    "date": "2017-12-15",
+    "date": "2017-08-02",
+    "venue": "White House Press Briefing (exchange with CNN’s Jim Acosta)",
+    "categories": [
+      "Immigration"
+    ],
+    "source": "https://abcnews.go.com/Politics/trump-adviser-heated-exchange-reporter-statue-liberty-poem/story?id=48996911"
+  },
+  {
+    "quote": "You have to speak English... it has to be a requirement.",
+    "person": "Stephen Miller",
+    "date": "2017-08-02",
+    "venue": "White House Press Briefing (on RAISE Act)",
+    "categories": [
+      "Immigration"
+    ],
+    "source": "https://transcripts.cnn.com/show/sitroom/date/2017-08-02/segment/01"
+  },
+  {
+    "quote": "That you think only people from Great Britain or Australia would speak English is so insulting to millions of hardworking immigrants...",
+    "person": "Stephen Miller",
+    "date": "2017-08-02",
+    "venue": "White House Press Briefing (to Jim Acosta)",
+    "categories": [
+      "Immigration",
+      "Media/Press"
+    ],
+    "source": "https://transcripts.cnn.com/show/cnr/date/2017-08-02/segment/07"
+  },
+  {
+    "quote": "The only way to have immigration policy work is it has to be national; it has to be uniform.",
+    "person": "Stephen Miller",
+    "date": "2017-08-02",
     "venue": "White House Press Briefing",
     "categories": [
       "Immigration"
-    ]
+    ],
+    "source": "https://www.presidency.ucsb.edu/documents/press-briefing-press-secretary-sarah-sanders-and-senior-policy-advisor-stephen-miller"
+  },
+  {
+    "quote": "This is the largest proposed reform to our immigration policy in half a century.",
+    "person": "Stephen Miller",
+    "date": "2017-08-02",
+    "venue": "White House Press Briefing",
+    "categories": [
+      "Immigration"
+    ],
+    "source": "https://www.bostonglobe.com/news/politics/2017/08/02/read-full-transcript-wednesday-press-briefing/jP2IHQrMiF1RA6UE1zOhGJ/story.html"
   }
 ]

@@ -1,12 +1,54 @@
 [
   {
-    "quote": "We can\u2019t restore our civilization with somebody else\u2019s babies.",
+    "quote": "We can’t restore our civilization with somebody else’s babies.",
     "person": "Steve King",
     "date": "2017-03-12",
-    "venue": "Twitter",
+    "venue": "Twitter / CNN interview follow-up",
     "categories": [
       "Immigration",
       "Race/Ethnicity/Religion"
-    ]
+    ],
+    "source": "https://www.pbs.org/newshour/politics/rep-steve-king-u-s-doesnt-need-somebody-elses-babies"
+  },
+  {
+    "quote": "White nationalist, white supremacist, Western civilization — how did that language become offensive?",
+    "person": "Steve King",
+    "date": "2019-01-10",
+    "venue": "Interview with The New York Times (reported)",
+    "categories": [
+      "Race/Ethnicity/Religion"
+    ],
+    "source": "https://www.cbsnews.com/news/iowa-rep-steve-king-white-nationalism-and-white-supremacy/"
+  },
+  {
+    "quote": "If not for rape and incest, would there be any population left?",
+    "person": "Steve King",
+    "date": "2019-08-14",
+    "venue": "Remarks in Iowa (Urbandale/Des Moines area)",
+    "categories": [
+      "Women's Rights"
+    ],
+    "source": "https://www.pbs.org/newshour/politics/rep-king-justifies-banning-abortion-by-suggesting-that-world-was-populated-by-rape-or-incest"
+  },
+  {
+    "quote": "I meant exactly what I said.",
+    "person": "Steve King",
+    "date": "2017-03-13",
+    "venue": "CNN interview defending tweet",
+    "categories": [
+      "Immigration",
+      "Race/Ethnicity/Religion"
+    ],
+    "source": "https://time.com/4699397/rep-steve-king-twitter/"
+  },
+  {
+    "quote": "Western civilization is under assault.",
+    "person": "Steve King",
+    "date": "2020-10-01",
+    "venue": "House floor remarks (defending prior comments)",
+    "categories": [
+      "Race/Ethnicity/Religion"
+    ],
+    "source": "https://www.kcci.com/article/steve-king-defends-past-comments-saying-western-civilization-is-under-assault/34241837"
   }
 ]

@@ -1,11 +1,54 @@
 [
   {
-    "quote": "The war for America\u2019s future will be fought in the media.",
+    "quote": "If you think they’re going to give you your country back without a fight, you are sadly mistaken. Every day, it is going to be a fight.",
     "person": "Steve Bannon",
-    "date": "2018-06-10",
-    "venue": "Interview",
+    "date": "2017-02-23",
+    "venue": "CPAC interview with Reince Priebus",
+    "categories": [
+      "Democracy/Elections",
+      "Media/Press"
+    ],
+    "source": "https://www.washingtonpost.com/politics/top-wh-strategist-vows-a-daily-fight-for-deconstruction-of-the-administrative-state/2017/02/23/03f6b8da-f9ea-11e6-bf01-d47f8cf9b643_story.html"
+  },
+  {
+    "quote": "The deconstruction of the administrative state.",
+    "person": "Steve Bannon",
+    "date": "2017-02-23",
+    "venue": "CPAC interview with Reince Priebus",
+    "categories": [
+      "Democracy/Elections",
+      "Economy"
+    ],
+    "source": "https://time.com/4681094/reince-priebus-steve-bannon-cpac-interview-transcript/"
+  },
+  {
+    "quote": "There's a new political order that's being formed.",
+    "person": "Steve Bannon",
+    "date": "2017-02-23",
+    "venue": "CPAC",
+    "categories": [
+      "Democracy/Elections"
+    ],
+    "source": "https://www.commondreams.org/news/2017/02/23/bannon-heralds-deconstruction-administrative-state-and-trumps-new-political-order"
+  },
+  {
+    "quote": "Every day we get stronger and stronger.",
+    "person": "Steve Bannon",
+    "date": "2017-02-23",
+    "venue": "CPAC",
+    "categories": [
+      "Democracy/Elections"
+    ],
+    "source": "https://time.com/4681094/reince-priebus-steve-bannon-cpac-interview-transcript/"
+  },
+  {
+    "quote": "It’s not only not going to get better — it’s going to get worse every day for the media.",
+    "person": "Steve Bannon",
+    "date": "2017-01-26",
+    "venue": "Interview context (reported widely)",
     "categories": [
       "Media/Press"
-    ]
+    ],
+    "source": "https://www.washingtonpost.com/politics/2017/01/26/steve-bannon-lashes-out-press-calling-it-opposition-party/"
   }
 ]
