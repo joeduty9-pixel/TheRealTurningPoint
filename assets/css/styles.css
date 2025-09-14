@@ -1,9 +1,1 @@
-
-body{font-family:sans-serif;background:#0B1E3D;color:#fff;margin:0}
-.wrap{padding:1em;}
-.card{margin:1em 0;padding:1em;background:#fff;color:#000;border-radius:6px;}
-blockquote{font-size:1.2em;font-weight:bold;margin:0 0 .5em 0;}
-.meta{font-size:.9em;color:#333;}
-.tag{display:inline-block;background:#eee;border-radius:4px;padding:2px 6px;margin-right:4px;font-size:.8em;}
-.links{margin-top:.5em;}
-.linkbtn{margin-right:6px;font-size:.8em;color:#004}
+body{font-family:sans-serif;background:#0B1E3D;color:#fff;margin:0} .wrap{padding:1em;} .card{margin:1em 0;padding:1em;background:#fff;color:#000;border-radius:6px;} blockquote{font-size:1.2em;font-weight:bold;margin:0 0 .5em 0;}

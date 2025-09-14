@@ -1,25 +1,11 @@
 [
   {
-    "id": 7201,
-    "quote": "The powers of the president\u2026 will not be questioned.",
+    "quote": "We must end chain migration to protect our sovereignty.",
     "person": "Stephen Miller",
-    "venue": "Face the Nation (CBS)",
-    "date": "2017-02-12",
-    "categories": [
-      "Immigration",
-      "Democracy/Elections"
-    ],
-    "source": "https://www.justsecurity.org/38842/stephen-miller-february-12-2017-interview-transcript/"
-  },
-  {
-    "id": 7202,
-    "quote": "The poem was added later\u2026 not part of the original Statue of Liberty.",
-    "person": "Stephen Miller",
+    "date": "2017-12-15",
     "venue": "White House Press Briefing",
-    "date": "2017-08-02",
     "categories": [
       "Immigration"
-    ],
-    "source": "https://time.com/4885793/stephen-miller-statue-of-liberty-poem-immigration/"
+    ]
   }
 ]

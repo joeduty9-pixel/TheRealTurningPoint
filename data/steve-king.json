@@ -1,25 +1,12 @@
 [
   {
-    "id": 7302,
     "quote": "We can\u2019t restore our civilization with somebody else\u2019s babies.",
     "person": "Steve King",
-    "venue": "Tweet (press coverage)",
     "date": "2017-03-12",
+    "venue": "Twitter",
     "categories": [
       "Immigration",
       "Race/Ethnicity/Religion"
-    ],
-    "source": "https://time.com/4707708/steve-king-somebody-elses-babies-tweet/"
-  },
-  {
-    "id": 7301,
-    "quote": "White nationalist, white supremacist, Western civilization \u2014 how did that language become offensive?",
-    "person": "Steve King",
-    "venue": "Interview",
-    "date": "2019-01-10",
-    "categories": [
-      "Race/Ethnicity/Religion"
-    ],
-    "source": "https://www.washingtonpost.com/politics/2019/01/11/steve-king-white-supremacist-white-nationalist-remarks/"
+    ]
   }
 ]
